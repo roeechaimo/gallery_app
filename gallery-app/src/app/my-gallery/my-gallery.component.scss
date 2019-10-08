@@ -28,6 +28,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: 1%;
 
     app-image {
       flex: 0 0 23%;
@@ -36,6 +37,26 @@
 
     app-image:hover {
       cursor: pointer;
+    }
+  }
+
+  ngu-carousel {
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+
+    ngu-tile {
+      ::ng-deep {
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          max-width: 100%;
+          max-height: 25vh;
+        }
+      }
     }
   }
 }

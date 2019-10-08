@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FeedService } from "./services/feed/feed.service";
 import { Image } from "./models/image.model";
+import { NguCarouselConfig } from "@ngu/carousel";
 
 @Component({
   selector: "app-my-gallery",
@@ -19,11 +20,30 @@ export class MyGalleryComponent implements OnInit {
   public filteredImages: Image[];
   public searchValue: string = "";
   public sortValue: string = "";
+  public carouselItems: Array<any> = [];
+  public carouselTileItems: Array<any>;
+  public carouselTiles;
+  public carouselConfig: NguCarouselConfig;
 
   constructor(private _feedService: FeedService) {}
 
   ngOnInit() {
     this.getFeed();
+    this.carouselConfig = {
+      grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+      slide: 1,
+      speed: 400,
+      interval: {
+        timing: +this.transitionTime * 1000,
+        initialDelay: 1000
+      },
+      point: {
+        visible: false
+      },
+      load: 2,
+      loop: true,
+      touch: true
+    };
   }
 
   public getFeed() {
@@ -31,6 +51,7 @@ export class MyGalleryComponent implements OnInit {
       const images = data;
       this.images = [...images];
       this.filteredImages = [...images];
+      this.carousleItemsInit();
     });
   }
 
@@ -73,5 +94,18 @@ export class MyGalleryComponent implements OnInit {
     }
 
     this.filteredImages = [...images];
+  }
+
+  private carousleItemsInit() {
+    this.carouselItems = this.filteredImages.map(image => image.url);
+
+    this.carouselTileItems = [0, 1, 2, 3];
+
+    this.carouselTiles = {
+      0: [],
+      1: [],
+      2: [],
+      3: []
+    };
   }
 }

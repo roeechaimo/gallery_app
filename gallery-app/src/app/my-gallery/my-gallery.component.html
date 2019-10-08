@@ -28,7 +28,17 @@
   </div>
 
   <div class="slideShow">
-    slideShow!
+    <ngu-carousel
+      #myCarousel
+      [inputs]="carouselConfig"
+      [dataSource]="carouselItems"
+    >
+      <ngu-tile *nguCarouselDef="let item">
+        <div class="tile">
+          <img [src]="item" onError="this.src='assets/images/noimage.png'" />
+        </div>
+      </ngu-tile>
+    </ngu-carousel>
   </div>
 
   <div class="images">
