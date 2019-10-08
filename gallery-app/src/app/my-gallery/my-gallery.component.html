@@ -1,11 +1,23 @@
 <div class="container">
+  <div class="action-container">
+    <div *ngIf="search" class="search-box-container">
+      <input
+        type="text"
+        placeholder="Search image by title"
+        [(ngModel)]="searchValue"
+      />
+
+      <div class="button" (click)="onSearchClick()">Search</div>
+    </div>
+  </div>
+
   <div class="slideShow">
     slideShow!
   </div>
 
   <div class="images">
     <app-image
-      *ngFor="let image of images"
+      *ngFor="let image of filteredImages"
       [title]="image?.title"
       [url]="image?.url"
       [date]="image?.date"

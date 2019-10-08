@@ -9,8 +9,15 @@ import { Image } from "./models/image.model";
 })
 export class MyGalleryComponent implements OnInit {
   @Input() feed: string;
+  @Input() search: boolean = true;
+  @Input() pagination: boolean = true;
+  @Input() resultsPerPage: number = 10;
+  @Input() sorting: boolean = true;
+  @Input() transitionTime: number = 4;
 
   public images: Image[];
+  public filteredImages: Image[];
+  public searchValue: string = "";
 
   constructor(private _feedService: FeedService) {}
 
@@ -21,6 +28,13 @@ export class MyGalleryComponent implements OnInit {
   public getFeed() {
     this._feedService.getFeed(this.feed).subscribe((data: Image[]) => {
       this.images = data;
+      this.filteredImages = data;
     });
+  }
+
+  public onSearchClick() {
+    this.filteredImages = this.images.filter(image =>
+      image.title.includes(this.searchValue)
+    );
   }
 }

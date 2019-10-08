@@ -1,4 +1,22 @@
 .container {
+  .action-container {
+    padding: 1vh 0 1vh 0;
+
+    .search-box-container {
+      display: flex;
+
+      .button {
+        background-color: cornsilk;
+        border: 1px solid black;
+      }
+
+      .button:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
+
   .images {
     display: flex;
     justify-content: center;
@@ -8,6 +26,10 @@
     app-image {
       flex: 0 0 23%;
       margin: 0.5% 0 0.5% 0;
+    }
+
+    app-image:hover {
+      cursor: pointer;
     }
   }
 }
