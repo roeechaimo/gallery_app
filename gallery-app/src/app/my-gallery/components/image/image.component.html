@@ -1,1 +1,11 @@
-<p>image works!</p>
+<div class="container">
+  <p class="title">{{ title }}</p>
+
+  <img
+    class="image"
+    [src]="url"
+    onError="this.src='assets/images/noimage.png'"
+  />
+
+  <p class="date">{{ date }}</p>
+</div>

@@ -4,6 +4,11 @@
   </div>
 
   <div class="images">
-    <app-image></app-image>
+    <app-image
+      *ngFor="let image of images"
+      [title]="image?.title"
+      [url]="image?.url"
+      [date]="image?.date"
+    ></app-image>
   </div>
 </div>
