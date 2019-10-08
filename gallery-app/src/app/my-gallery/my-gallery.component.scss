@@ -1,9 +1,11 @@
 .container {
   .action-container {
     padding: 1vh 0 1vh 0;
+    display: flex;
 
     .search-box-container {
       display: flex;
+      flex: 0 0 50%;
 
       .button {
         background-color: cornsilk;
@@ -13,6 +15,10 @@
       .button:hover {
         cursor: pointer;
       }
+    }
+
+    .sort-container {
+      flex: 0 0 50%;
     }
 
   }
